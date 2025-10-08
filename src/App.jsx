@@ -1,6 +1,13 @@
+import Header from "./components/Header";
+import InvestmentForm from "./components/investmentForm";
+import InvestmentTable from "./components/investmentTable";
 function App() {
   return (
-    <h1>React Investment Calculator</h1>
+    <>
+    <Header />
+    <InvestmentForm />
+    {/* <InvestmentTable /> */}
+    </>
   )
 }
 
