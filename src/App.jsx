@@ -1,6 +1,6 @@
 import Header from "./components/Header";
-import InvestmentForm from "./components/investmentForm";
-import InvestmentTable from "./components/investmentTable";
+import InvestmentForm from "./components/InvestmentForm";
+import InvestmentTable from "./components/InvestmentTable";
 import { useState } from "react";
 function App() {
 
@@ -11,6 +11,7 @@ function App() {
         "duration": 5
     })
 
+    const inputIsValid = userInput.duration >= 1;
 
     function handleChange(inputIdentifier, newValue) {
         setUserInput(prevUserInput => {
@@ -25,7 +26,12 @@ function App() {
     <>
     <Header />
     <InvestmentForm userInput={userInput} onInputChange={handleChange} />
-    <InvestmentTable input={userInput}/>
+    { !inputIsValid &&
+      <p className="center">Please enter a valid duration (minimum 1 year)</p>
+    }
+    { inputIsValid &&
+      <InvestmentTable input={userInput} />
+    }
     </>
   )
 }
